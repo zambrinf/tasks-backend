@@ -11,5 +11,11 @@ pipeline {
         bat 'mvn test'
       }
     }
+    stage ('Deploy backend') {
+      steps {
+        deploy adapters: [tomcat9(credentialsId: 'tomcat-login', path: '', url: 'http://192.168.179.101:8080/')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
+      }
+    }
   }
 }
+
