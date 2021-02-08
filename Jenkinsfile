@@ -19,6 +19,7 @@ pipeline {
     stage ('API Tests') {
       steps {
         git branch: 'main', credentialsId: 'github_login', url: 'https://github.com/zambrinf/tasks-api-test'
+        bat 'mvn test'
       }
     }
   }
