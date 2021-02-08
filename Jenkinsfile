@@ -27,7 +27,7 @@ pipeline {
     stage ('Deploy frontend') {
       steps {
         dir('frontend') {
-          git branch: 'main', credentialsId: 'github_login', url: 'https://github.com/zambrinf/tasks-frontend'
+          git branch: 'master', credentialsId: 'github_login', url: 'https://github.com/zambrinf/tasks-frontend'
           bat 'mvn clean package'
           deploy adapters: [tomcat9(credentialsId: 'tomcat-login', path: '', url: 'http://192.168.179.101:8080/')], contextPath: 'tasks', war: 'target/tasks.war'
         }
