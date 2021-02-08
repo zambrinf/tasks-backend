@@ -16,6 +16,11 @@ pipeline {
         deploy adapters: [tomcat9(credentialsId: 'tomcat-login', path: '', url: 'http://192.168.179.101:8080/')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
       }
     }
+    stage ('API Tests') {
+      steps {
+        git branch: 'main', credentialsId: 'github_login', url: 'https://github.com/zambrinf/tasks-api-test'
+      }
+    }
   }
 }
 
