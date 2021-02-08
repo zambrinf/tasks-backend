@@ -11,7 +11,7 @@ public class DateUtilsTest {
     public void deveRetornarTrueParaDatasFuturas() {
         LocalDate localDate = LocalDate.now().plusYears(1);
         boolean resultado = DateUtils.isEqualOrFutureDate(localDate);
-        Assert.assertFalse(resultado);
+        Assert.assertTrue(resultado);
     }
 
     @Test
